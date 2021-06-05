@@ -16,44 +16,44 @@ GREEN = "\u001b[32m"
 class TicTacToe:
     def __init__(self):
         self.gameHistory = []
-        self.clf = MLPClassifier(solver='lbgfs',alpha=1e-5,hidden_layer_size=(6,2),random_state=1)
+        #self.clf = MLPClassifier(solver='lbgfs',alpha=1e-5,hidden_layer_size=(6,2),random_state=1)
 
-        # while(True):
-        #     self.board = [
-        #         [" "," "," "],
-        #         [" "," "," "],
-        #         [" "," "," "]
-        #     ]
-        #     self.player = False
+        while(True):
+            self.board = [
+                [" "," "," "],
+                [" "," "," "],
+                [" "," "," "]
+            ]
+            self.player = False
 
-        #     while(True):
-        #         self.printBoard()
+            while(True):
+                self.printBoard()
                 
-        #         if(self.boardIsFull()):
-        #             print(f"{RED}Le plateau est plein : c'est match nul !{WHITE}")
-        #             break
+                if(self.boardIsFull()):
+                    print(f"{RED}Le plateau est plein : c'est match nul !{WHITE}")
+                    break
 
-        #         print(f"C'est le joueur {int(self.player)+1} qui joue.")
+                print(f"C'est le joueur {int(self.player)+1} qui joue.")
                 
-        #         while(True):
-        #             col,row = self.getRowAndCol()
+                while(True):
+                    col,row = self.getRowAndCol()
 
-        #             if(self.board[col][row] == " "):
-        #                 break
-        #             print("Cette case est déjà utilisée !")
+                    if(self.board[col][row] == " "):
+                        break
+                    print("Cette case est déjà utilisée !")
 
-        #         self.board[col][row] = f"{BLUE}O{WHITE}" if self.player else f"{RED}X{WHITE}"
+                self.board[col][row] = f"{BLUE}O{WHITE}" if self.player else f"{RED}X{WHITE}"
 
-        #         print(f"Vous avez placé {'un rond' if self.player else 'une croix'} en coordonnée ({col},{row}).")
+                print(f"Vous avez placé {'un rond' if self.player else 'une croix'} en coordonnée ({col},{row}).")
 
-        #         if(self.detectWinning()):
-        #             print(f"{GREEN}Le joueur {int(self.player)+1} a gagné !{WHITE}")
-        #             break
+                if(self.detectWinning()):
+                    print(f"{GREEN}Le joueur {int(self.player)+1} a gagné !{WHITE}")
+                    break
 
-        #         self.player = not self.player
+                self.player = not self.player
             
-        #     if(self.askReplay() in ["N","n"]):
-        #         break
+            if(self.askReplay() in ["N","n"]):
+                break
 
     def printBoard(self):
         print(f"     0)  1)  2) ")
@@ -157,7 +157,7 @@ class TicTacToe:
             print(f"Itération : {i}, victoires : {win}, défaites : {defeat}, égalités : {egality}")
             self.refreshAI()
     
-        def refreshAI(self):
+    def refreshAI(self):
         boards = []
         for i in range(len(self.gameHistory)):
             boards.append(self.gameHistory[i]["board"])
@@ -230,3 +230,5 @@ class TicTacToe:
             
             if(self.askReplay() in ["N","n"]):
                 break
+
+t = TicTacToe()
